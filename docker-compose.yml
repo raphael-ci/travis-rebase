@@ -1,0 +1,15 @@
+# docker-compose up --build --exit-code-from app
+version: '2.2'
+services:
+  app:
+    environment:
+    - DISPLAY
+    image: alpine:3.10
+    working_dir: /tmp
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: > 
+      /bin/bash -c "
+        echo hello;
+      "
+      

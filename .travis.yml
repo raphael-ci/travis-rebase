@@ -1,0 +1,16 @@
+sudo: required
+services: 
+- docker
+env:
+  global:
+    - DOCKER_CLIENT_TIMEOUT: 120
+    - COMPOSE_HTTP_TIMEOUT: 120
+slim: &slim
+  stage: Slim9.9
+  os: linux
+  language: shell
+  script:
+    - docker-compose up --build --exit-code-from app
+jobs:
+  include:
+    - <<: *slim
