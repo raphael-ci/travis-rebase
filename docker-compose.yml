@@ -13,7 +13,7 @@ services:
       /bin/sh -c "
         if [ "$$LICENSE" = "BLAH" ]; then
           echo verified;
-          echo hola;
+          echo konichiwa;
           exit 0;
         else
           echo wrong;
