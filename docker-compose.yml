@@ -4,12 +4,20 @@ services:
   app:
     environment:
     - DISPLAY
+    - LICENSE
     image: alpine:3.10
     working_dir: /tmp
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     command: > 
       /bin/sh -c "
-        echo hello;
+        if [ "$$LICENSE" = "BLAH" ]; then
+          echo verified;
+          echo hola;
+          exit 0;
+        else
+          echo wrong;
+          exit 1;
+        fi;
       "
       
